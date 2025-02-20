@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="icon" href="images/logo.png" type="image/x-icon" >
+</head>
+
+<script language="Javascript">
+    function MovieTicketing(){
+        var custname = MovieTicketingForm.txtName.value;
+        var contactno = MovieTicketingForm.txtContact.value;
+        var custtype = MovieTicketingForm.customer_type.value;
+        var emailad = MovieTicketingForm.txtEmail.value;
+        var ticketno = MovieTicketingForm.ticketno.value
+        var date = MovieTicketingForm.moviedate.value;
+        var movietitle =  MovieTicketingForm.title.value;
+        var cinematype =  MovieTicketingForm.cinema_type.value;
+        var boxtype = MovieTicketingForm.box_type.value;
+        var totalamount = 0;
+
+       // cinema type fee
+        var cinematypefee = 0;
+        switch(cinematype){
+            case "Regular":
+                cinematypefee = 340;
+                cinematypefee*=ticketno;
+                totalamount+=cinematypefee;
+                document.getElementById("color_box").style.backgroundColor = "#fcc5c5"; break;
+            case "3D":
+                cinematypefee = 600; 
+                cinematypefee*=ticketno;
+                totalamount+=cinematypefee;
+                document.getElementById("color_box").style.backgroundColor = "#c5d7fc"; break;
+            case "VIP":
+                cinematypefee = 700;
+                cinematypefee*=ticketno; 
+                totalamount+=cinematypefee;
+                document.getElementById("color_box").style.backgroundColor = "#c5fcd6"; break;
+            default: 
+                cinematypefee = 340; 
+                cinematypefee*=ticketno; 
+                totalamount+=cinematypefee; 
+        }
+
+        //computation for customer type
+        var custtype_price = 0;
+
+        if(custtype == "Regular"){
+            custtype_price = 25;
+            custtype_price*=ticketno;
+            totalamount+=custtype_price;
+        }
+        else if(custtype == "Senior Citizen"){
+            totalamount-=(totalamount*.15)
+        }
+        else if(custtype == "VIP"){
+            totalamount+=(totalamount*.15)
+        }
+        else{
+            custtype_price = 0;
+        }
+
+    
+        //computation for box type
+        switch(boxtype){
+            case "Upper":
+                var boxtypefee = 0; 
+                boxtypefee*=ticketno;
+                totalamount+=boxtypefee;break;
+            case "Lower":
+                var boxtypefee = 10; 
+                boxtypefee*=ticketno;
+                totalamount+=boxtypefee;break;
+            case "Optimal":
+                var boxtypefee = 20; 
+                boxtypefee*=ticketno;
+                totalamount+=boxtypefee;break;
+            default: 
+            var boxtypefee = 0; 
+                boxtypefee*=ticketno;
+                totalamount+=boxtypefee;break;
+        }
+
+        // output
+        document.getElementById("namevalue").innerHTML = custname;
+        document.getElementById("contactvalue").innerHTML = contactno;
+        document.getElementById("custtypevalue").innerHTML = custtype;
+        document.getElementById("totalamountvalue").innerHTML = totalamount;
+        document.getElementById("emailvalue").innerHTML = emailad;
+        document.getElementById("ticketnovalue").innerHTML = ticketno;
+        document.getElementById("datevalue").innerHTML = date;
+        document.getElementById("movievalue").innerHTML = movietitle;
+        document.getElementById("cinemavalue").innerHTML = cinematype;
+        document.getElementById("boxtypevalue").innerHTML = boxtype;
+        document.getElementById("custtype_amountvalue").innerHTML = custtype_price;
+        document.getElementById("cinema_amountvalue").innerHTML = cinematypefee;
+        document.getElementById("boxtype_amountvalue").innerHTML = boxtypefee;
+    }
+
+    function disables(){
+            var movietitles = MovieTicketingForm.title.value;
+            if(movietitles == "Guardians of the Galaxy Volume 3"){
+                document.getElementById("image1").src = "images/movie1.jpg";
+                document.getElementById("image2").src = "images/movie1.jpg";
+            }
+            else if (movietitles == "The Super Mario Bros. Movie"){
+                document.getElementById("image1").src = "images/movie2.jpg";
+                document.getElementById("image2").src = "images/movie2.jpg";
+            }
+            else if (movietitles == "Voltes V Legacy: The Cinematic Experience"){
+                document.getElementById("image1").src = "images/movie3.jpg";
+                document.getElementById("image2").src = "images/movie2.jpg";
+            }
+            else if (movietitles == "Rebound"){
+                document.getElementById("image1").src = "images/movie4.jpg";
+                document.getElementById("image2").src = "images/movie4.jpg";
+            }
+            else if (movietitles == "Renfield"){
+                document.getElementById("image1").src = "images/movie5.jpg";
+                document.getElementById("image2").src = "images/movie5.jpg";
+            }
+            else if (movietitles == "John Wick: Chapter 4"){
+                document.getElementById("image1").src = "images/movie6.jpg";
+                document.getElementById("image2").src = "images/movie6.jpg";
+            }
+        }
+
+        function radbutton(){
+            var movietitle =  MovieTicketingForm.title.value;
+            radioreg = document.getElementById("reg");
+            radio3d = document.getElementById("3d");
+            radiovip = document.getElementById("vip");
+            radioreg.checked=false;
+            radio3d.checked=false;
+            radiovip.checked=false;
+
+            if(movietitle == "Guardians of the Galaxy Volume 3"){
+                document.getElementById("vip").disabled=true;
+                document.getElementById("3d").disabled=false;
+                document.getElementById("reg").disabled=false;
+                
+            }
+            else if(movietitle == "The Super Mario Bros. Movie"){
+                document.getElementById("reg").disabled=true;
+                document.getElementById("3d").disabled=false;
+                document.getElementById("vip").disabled=false;
+            }
+            else if(movietitle == "Voltes V Legacy: The Cinematic Experience"){
+                document.getElementById("reg").disabled=true;
+                document.getElementById("3d").disabled=false;
+                document.getElementById("vip").disabled=false;
+            }
+            else if(movietitle == "Rebound"){
+                document.getElementById("3d").disabled=true;
+                document.getElementById("vip").disabled=true;
+                document.getElementById("reg").disabled=false;
+            }
+            else if(movietitle == "Renfield"){
+                document.getElementById("3d").disabled=true;
+                document.getElementById("vip").disabled=true;
+                document.getElementById("reg").disabled=false;
+            }
+            else{
+                document.getElementById("reg").disabled=false;
+                document.getElementById("3d").disabled=false;
+                document.getElementById("vip").disabled=false;
+            }
+
+        }
+
+        
+
+</script>
+
+<body style="background-color: #f4f4f4;">
+    <!--Start NavBar-->
+    <nav class="navbar navbar-expand-lg p-3" style="background-color: #79031d">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="index.html"><span style=" color: #f4f4f4; font-weight: 900; padding: 5px;">Movie</span><span style=" color: #79031d; font-weight: 900; background-color: #f4f4f4; padding: 5px; border-radius: 10px;">Hub</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse p-2" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" style=" color: #f4f4f4;" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style=" color: #f4f4f4;" href="movies.html">Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style=" color: #f4f4f4;" href="tickets.html">Tickets</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <!--End NavBar-->
+
+    <!--Start Header-->
+    <div class="container-fluid p-3" >
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="card text-bg-dark">
+                    <img src="images/movie1.png" class="card-img" class="d-block w-100" alt="...">
+                    <div class="card-img-overlay">
+                    <h3 class="card-title">Guardians of the Galaxy Volume 3</h3>
+                     <p class="card-text"><small>2023 ‧ Adventure/Sci-fi ‧ 2h 29m</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card text-bg-dark">
+                    <img src="images/movie2.png" class="card-img" class="d-block w-100" alt="...">
+                    <div class="card-img-overlay">
+                    <h3 class="card-title">The Super Mario Bros. Movie</h3>
+                    <p class="card-text"><small>2023 ‧ Adventure/Fantasy ‧ 1h 32m</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card text-bg-dark">
+                    <img src="images/movie3.png" class="card-img" class="d-block w-100" alt="...">
+                    <div class="card-img-overlay">
+                    <h3 class="card-title">Renfield</h3>
+                    <p class="card-text"><small>2023 ‧ Horror/Comedy ‧ 1h 33m</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card text-bg-dark">
+                    <img src="images/movie4.png" class="card-img" class="d-block w-100" alt="...">
+                    <div class="card-img-overlay">
+                    <h3 class="card-title">Voltes V</h3>
+                    <p class="card-text"><small>2023 ‧ Drama</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card text-bg-dark">
+                    <img src="images/movie5.png" class="card-img" class="d-block w-100" alt="...">
+                    <div class="card-img-overlay">
+                    <h3 class="card-title">Rebound</h3>
+                    <p class="card-text"><small>2005 ‧ Comedy/Family ‧ 1h 43m</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="card text-bg-dark">
+                    <img src="images/movie6.png" class="card-img" class="d-block w-100" alt="...">
+                    <div class="card-img-overlay">
+                    <h3 class="card-title">John Wick: Chapter 4</h3>
+                    <p class="card-text"><small>2023 ‧ Action/Neo-noir ‧ 2h 49m</small></p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+  </div>
+  <!--End Header-->
+
+    <!--Start Content-->
+        <div class="container-fluid text-dark p-5 " id="color_box" style="border: 2px; border-color: black;">
+            <!--start title-->
+            <div class="row pt-5 text-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <h1>Book Tickets</h1>
+                </div>
+            </div>
+            <!--end title-->
+            <!--start inputs-->
+            <div class="row p-5" style="border: 2px; border-color: black;">
+                <div class="col-xl-6 p-5" style="border: 2px; border-color: black;">
+                    <form name="MovieTicketingForm">
+                        <h3 class="text-center p-5">Fill-in the Details</h3>
+                        <div class="row">
+                            <!--start image-->
+                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 justify-content-center p-3">
+                                <img src="sample.png" class="img-fluid" style="max-width: 180px;" id="image1"> 
+                            </div>
+                            <!--end image-->
+                            <div class="col-xl-8 ">
+                                    <!--start name-->
+                                    <div class="row p-2">
+                                        <div class="col-xl-5">
+                                            Name: 
+                                        </div>
+                                        <div class="col-xl-7">
+                                                <input type="text" name="txtName" value="" size="20" maxlength="">
+                                        </div>
+                                    </div>
+                                    <!--end name-->
+                                    <!--start contact-->
+                                    <div class="row p-2">
+                                        <div class="col-xl-5">
+                                            Contact No:
+                                        </div>
+                                        <div class="col-xl-7">
+                                            <input type="number" name="txtContact" value="" size="20" maxlength="11">
+                                        </div>
+                                    </div>
+                                    <!--end contact-->
+                                    <!--start customertype-->
+                                    <div class="row p-2">
+                                        <div class="col-xl-5">
+                                            Customer Type:
+                                        </div>
+                                        <div class="col-xl-7">
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <input type="radio" name="customer_type" value="Regular" size="20"> Regular
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <input type="radio" name="customer_type" value="Senior Citizen" size="20"> Senior Citizen
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <input type="radio" name="customer_type" value="VIP" size="20"> VIP
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <input type="radio" name="customer_type" value="Special" size="20"> Special
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end customertype-->
+                                    <!--start email-->
+                                    <div class="row p-2">
+                                        <div class="col-xl-5">
+                                            Email Address:
+                                        </div>
+                                        <div class="col-xl-7">
+                                            <input type="text" name="txtEmail" value="" size="20" maxlength="50">
+                                        </div>
+                                    </div>
+                                    <!--end email-->
+                                    <!--start no tickets-->
+                                    <div class="row p-2">
+                                        <div class="col-xl-5">
+                                            No. of Tickets: 
+                                        </div>
+                                        <div class="col-xl-7">
+                                            <input type="number" name="ticketno" id="ticketno" min="1" max="5" step="1" value="1">
+                                        </div>
+                                    </div>
+                                    <!--end no tickets-->
+                                </div>
+                        </div>
+                        <!--start date-->
+                        <div class="row p-2 pt-3">
+                            <div class="col-xl-3">
+                                Date:
+                            </div>
+                            <div class="col-xl-9">
+                                <input type="date" id="movie_date" name="moviedate">
+                            </div>
+                        </div>
+                        <!--end date-->
+                        <!--start title-->
+                        <div class="row p-2">
+                            <div class="col-xl-3">
+                                Movie Title: 
+                            </div>
+                            <div class="col-xl-9">
+                                <select name="title" id="movietitle" onchange="disables()" onclick="radbutton()">
+                                    <option value="Guardians of the Galaxy Volume 3">Guardians of the Galaxy Volume 3</option>
+                                    <option value="The Super Mario Bros. Movie">The Super Mario Bros. Movie</option>
+                                    <option value="Voltes V Legacy: The Cinematic Experience">Voltes V Legacy: The Cinematic Experience</option>
+                                    <option value="Rebound">Rebound</option>
+                                    <option value="Renfield">Renfield</option>
+                                    <option value="John Wick: Chapter 4">John Wick: Chapter 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--end title-->
+                        <!--start cinema type-->
+                        <div class="row p-2">
+                            <div class="col-xl-3">
+                                Cinema Type:
+                            </div>
+                            <div class="col-xl-9">
+                                <input type="radio" id="reg" name="cinema_type" value="Regular" size="20" unchecked> Regular  &nbsp;&nbsp;&nbsp;
+                                <input type="radio" id="3d" name="cinema_type" value="3D" size="20" unchecked> 3D  &nbsp;&nbsp;&nbsp;
+                                <input type="radio" id="vip" name="cinema_type" value="VIP" size="20" unchecked> VIP &nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                        <!--end cinema type-->
+                        <!--start box type-->
+                        <div class="row p-2">
+                            <div class="col-xl-3">
+                                Box Type:
+                            </div>
+                            <div class="col-xl-9">
+                                <input type="radio" name="box_type" value="Upper" size="20"> Upper &nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="box_type" value="Lower" size="20"> Lower  &nbsp;&nbsp; 
+                                <input type="radio" name="box_type" value="Optimal" size="20"> Optimal&nbsp; &nbsp;&nbsp;
+                            </div>
+                        </div>
+                        <!--end box type-->
+                        <div class="row p-2 pt-5">
+                            <div class="col-xl-12">
+                                <input type="button" class="button-9" name="process" value="Process" onclick="MovieTicketing()">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xl-1 px-0">
+                    <div class="vl px-0 mx-0"></div>
+                </div>
+                <!--start ticket summary-->
+                <div class="col-xl-5 p-5">
+                    <h3 class="text-center p-5">Ticket Summary</h3>
+                    <div class="row">
+                        <!--start image output-->
+                        <div class="col-xl-8 px-0 mx-0">
+                            <!--start name output-->
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Name:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="namevalue" >______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="namevalue" style="color:transparent">______</div>
+                                </div>
+                            </div>
+                            <!--end name output-->
+                            <!--start contact output-->
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Contact No:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="contactvalue">______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="contactvalue" style="color:transparent">______</div>
+                                </div>
+                            </div>
+                            <!--end contact output-->
+                            <!--start email output-->
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Email Address:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="emailvalue">______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="emailvalue" style="color:transparent">______</div>
+                                </div>
+                            </div>
+                            <!--end email output-->
+                            <!--start date-->
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Date:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="datevalue">______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="datevalue" style="color:transparent">______</div>
+                                </div>
+                            </div>
+                            <!--end date-->
+                            <!--start movie title-->
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Movie Title:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="movievalue">______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="movievalue" style="color:transparent">______</div>
+                                </div>
+                            </div>
+                            <!--end movie title-->
+                        </div>
+                            
+                        <!--end image output-->
+                        <div class="col-xl-4 px-0">
+                            <img src="sample.png" class="img-fluid" style="max-width: 180px;" id="image2">
+                        </div>
+                    </div>
+                    <div class="row pt-3 px-0 ">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 px-0 text-dark">
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Customer Type:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="custtypevalue">______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="custtype_amountvalue">______</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">No. of Tickets:</div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="ticketnovalue">______</div>
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="ticketnovalue" style="color:transparent">______</div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Cinema Type:</div>                                
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="cinemavalue">______</div>                                
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="cinema_amountvalue">______</div>                                
+                                </div>
+                            </div>
+                            <div class="row pt-2">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div style="font-weight: bold;">Box Type:</div>                                
+                                </div>
+                                <div class="col-xl-6">
+                                    <div id="boxtypevalue">______</div>                                
+                                </div>
+                                <div class="col-xl-2">
+                                    <div class="text-end" id="boxtype_amountvalue">______</div>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="row pt-5">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="text-end"><h6>Total Amount:</h6></div>
+                            <div class="text-end" id="totalamountvalue">______</div>      
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+             <!--end inputs-->
+        </div>
+
+    <!--End Content-->
+
+    <!--Start Footer-->
+    <div class="container-fluid" style="background-color: #79031d;">
+        <!--start socmeds-->
+        <div class="row pt-5">
+            <div class="col-xl-12">
+                <div class="row align-content-center">
+                    <div class="col-xl-12 d-flex justify-content-center">
+                        <a href="#" class="p-3"><img src="images/facebook.png"></a>
+                        <a href="#" class="p-3"><img src="images/instagram.png"></a>
+                        <a href="#" class="p-3"><img src="images/twitter.png"></a>
+                        <a href="#" class="p-3"><img src="images/youtube.png"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 d-flex justify-content-center">
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end socmeds-->
+        <!--start quick links-->
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+            <div class="row p-3">
+                <div class="col">
+                    <h1><span style=" color: #f4f4f4; font-weight: 900;">Movie</span><span style=" color: #79031d; font-weight: 900; background-color: #f4f4f4; padding: 5px; border-radius: 20px;">Hub</span></h1>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="index.html">Home</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="cinemas.html">Cinemas</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="movies.html">Movies</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="#">Ratings</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="#">FAQs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                <div class="row p-3">
+                    <div class="col">
+                        Copyright &#169; 2023 Developed by <br>Kaye Bautista & John Hynes Longares
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                
+            </div>
+        </div>
+        <!--end quick links-->
+  </div>
+  <!--End Footer-->
+</body>
+</html>

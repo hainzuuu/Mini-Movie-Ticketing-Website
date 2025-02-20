@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="icon" href="images/logo.png" type="image/x-icon" >
+</head>
+<body style="background-color: #f4f4f4;">
+    <!--Start NavBar-->
+    <nav class="navbar navbar-expand-lg p-3" style="background-color: #79031d">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html"><span style=" color: #f4f4f4; font-weight: 900; padding: 5px;">Movie</span><span style=" color: #79031d; font-weight: 900; background-color: #f4f4f4; padding: 5px; border-radius: 10px;">Hub</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse p-2" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" style=" color: #f4f4f4;" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style=" color: #f4f4f4;" href="movies.html">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style=" color: #f4f4f4;" href="tickets.html">Tickets</a>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <!--End NavBar-->
+
+        <!--Start Header-->
+        <div class="container-fluid p-3" >
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card text-bg-dark">
+                        <img src="images/movie1.png" class="card-img" class="d-block w-100" alt="...">
+                        <div class="card-img-overlay">
+                        <h3 class="card-title">Guardians of the Galaxy Volume 3</h3>
+                         <p class="card-text"><small>2023 ‧ Adventure/Sci-fi ‧ 2h 29m</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card text-bg-dark">
+                        <img src="images/movie2.png" class="card-img" class="d-block w-100" alt="...">
+                        <div class="card-img-overlay">
+                        <h3 class="card-title">The Super Mario Bros. Movie</h3>
+                        <p class="card-text"><small>2023 ‧ Adventure/Fantasy ‧ 1h 32m</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card text-bg-dark">
+                        <img src="images/movie3.png" class="card-img" class="d-block w-100" alt="...">
+                        <div class="card-img-overlay">
+                        <h3 class="card-title">Renfield</h3>
+                        <p class="card-text"><small>2023 ‧ Horror/Comedy ‧ 1h 33m</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card text-bg-dark">
+                        <img src="images/movie4.png" class="card-img" class="d-block w-100" alt="...">
+                        <div class="card-img-overlay">
+                        <h3 class="card-title">Voltes V</h3>
+                        <p class="card-text"><small>2023 ‧ Drama</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card text-bg-dark">
+                        <img src="images/movie5.png" class="card-img" class="d-block w-100" alt="...">
+                        <div class="card-img-overlay">
+                        <h3 class="card-title">Rebound</h3>
+                        <p class="card-text"><small>2005 ‧ Comedy/Family ‧ 1h 43m</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card text-bg-dark">
+                        <img src="images/movie6.png" class="card-img" class="d-block w-100" alt="...">
+                        <div class="card-img-overlay">
+                        <h3 class="card-title">John Wick: Chapter 4</h3>
+                        <p class="card-text"><small>2023 ‧ Action/Neo-noir ‧ 2h 49m</small></p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+      </div>
+      <!--End Header-->
+
+      <!--Start Content-->
+      <div class="container-fluid  pt-3">
+            <!--Start Now Showing (Movies)-->
+            <div class="row p-5">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12"></div>
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                    <div class="row text-light">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-dark">
+                            <h1>Now Showing</h1>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-between text-dark">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                            <div class="row p-3">
+                                <!--start movie1-->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 p-2">
+                                    <div class="card p-2" style="width: 18rem;">
+                                        <img src="images/movie1.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h6 class="card-title">Guardians of the Galaxy</h6>
+                                        <a href="tickets.html" class="btn btn-primary">Buy Tickets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end movie1-->
+                                <!--start movie2-->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12  p-2">
+                                    <div class="card p-2" style="width: 18rem;">
+                                        <img src="images/movie2.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h6 class="card-title">The Supermario Bros</h6>
+                                        <a href="tickets.html" class="btn btn-primary">Buy Tickets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end movie2-->
+                                <!--start movie3-->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12  p-2">
+                                    <div class="card p-2" style="width: 18rem;">
+                                        <img src="images/movie3.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h6 class="card-title">Voltes V</h6>
+                                        <a href="tickets.html" class="btn btn-primary">Buy Tickets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end movie3-->
+                                <!--start movie4-->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12  p-2">
+                                    <div class="card p-2" style="width: 18rem;">
+                                        <img src="images/movie4.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h6 class="card-title">Renfield</h6>
+                                        <a href="tickets.html" class="btn btn-primary">Buy Tickets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end movie4-->
+                                <!--start movie5-->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12  p-2">
+                                    <div class="card p-2" style="width: 18rem;">
+                                        <img src="images/movie5.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h6 class="card-title">Rebound</h6>
+                                        <a href="tickets.html" class="btn btn-primary">Buy Tickets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end movie5-->
+                                <!--start movie6-->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12  p-2">
+                                    <div class="card p-2" style="width: 18rem;">
+                                        <img src="images/movie6.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                        <h6 class="card-title">John Wick: Chapter 4</h6>
+                                        <a href="tickets.html" class="btn btn-primary">Buy Tickets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end movie6-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12"></div>
+            </div>
+            <!--End Now Showing (Movies)-->
+      </div>
+      
+      <!--End Content-->
+
+      <!--Start Footer-->
+    <div class="container-fluid" style="background-color: #79031d;">
+        <!--start socmeds-->
+        <div class="row pt-5">
+            <div class="col-xl-12">
+                <div class="row align-content-center">
+                    <div class="col-xl-12 d-flex justify-content-center">
+                        <a href="#" class="p-3"><img src="images/facebook.png"></a>
+                        <a href="#" class="p-3"><img src="images/instagram.png"></a>
+                        <a href="#" class="p-3"><img src="images/twitter.png"></a>
+                        <a href="#" class="p-3"><img src="images/youtube.png"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 d-flex justify-content-center">
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end socmeds-->
+        <!--start quick links-->
+        <div class="row">
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+            <div class="row p-3">
+                <div class="col">
+                    <h1><span style=" color: #f4f4f4; font-weight: 900;">Movie</span><span style=" color: #79031d; font-weight: 900; background-color: #f4f4f4; padding: 5px; border-radius: 20px;">Hub</span></h1>
+                </div>
+            </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="index.html">Home</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="cinemas.html">Cinemas</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="movies.html">Movies</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="#">Ratings</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <a href="#">FAQs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                <div class="row p-3">
+                    <div class="col">
+                        Copyright &#169; 2023 Developed by <br>Kaye Bautista & John Hynes Longares
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 ">
+                
+            </div>
+        </div>
+        <!--end quick links-->
+  </div>
+  <!--End Footer-->
+</body>
+</html>
